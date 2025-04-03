@@ -1,0 +1,44 @@
+name: Deploy WordPress
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Deploy to Ubuntu Server
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_KEY }}
+        SERVER_IP: ${{ secrets.SERVER_IP }}
+        SERVER_USER: ${{ secrets.SERVER_USER }}
+      run: |
+        # Setup SSH Connection
+        mkdir -p ~/.ssh
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh -o StrictHostKeyChecking=no $SERVER_USER@$SERVER_IP << 'EOF'
+          # Navigate to Web Root
+          cd /var/www/html/wordpress
+
+          # Pull Latest Changes
+          git pull origin main
+
+          # Set Correct Permissions
+          chown -R www-data:www-data wp-content
+          chmod -R 755 wp-content
+
+          # Run Database Migrations (Using WP-CLI)
+          wp db check --allow-root
+          wp db import sql/latest.sql --allow-root
+          wp core update-db --allow-root
+
+          # Restart Apache
+          systemctl restart apache2
+        EOF
