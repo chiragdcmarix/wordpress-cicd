@@ -100,7 +100,10 @@ define( 'WP_DEBUG', TRUE );
 
 
 /* Add any custom values between this line and the "stop editing" line. */
-
+define('FORCE_SSL_ADMIN', true);
+if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
+    $_SERVER['HTTPS'] = 'on';
+} 
 
 
 /* That's all, stop editing! Happy publishing. */
