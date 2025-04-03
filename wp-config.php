@@ -27,13 +27,13 @@
 
 // ** Database settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
-define( 'DB_NAME', 'dellaterra' );
+define( 'DB_NAME', 'wordpress_db' );
 
 /** Database username */
-define( 'DB_USER', 'dellaterra' );
+define( 'DB_USER', 'wp_user' );
 
 /** Database password */
-define( 'DB_PASSWORD', 'j7iMZnCKd783Dz22' );
+define( 'DB_PASSWORD', 'Admin@123#@!$');
 
 /** Database hostname */
 define( 'DB_HOST', 'localhost' );
