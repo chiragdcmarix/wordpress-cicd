@@ -36,7 +36,7 @@ define( 'DB_USER', 'wp_user' );
 define( 'DB_PASSWORD', 'Admin@123#@!$');
 
 /** Database hostname */
-define( 'DB_HOST', 'localhost' );
+define( 'DB_HOST', '10.0.4.124' );
 
 /** Database charset to use in creating database tables. */
 define( 'DB_CHARSET', 'utf8mb4' );
