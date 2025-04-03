@@ -1,15 +1,16 @@
+
 # BEGIN WordPress
+# The directives (lines) between "BEGIN WordPress" and "END WordPress" are
+# dynamically generated, and should only be modified via WordPress filters.
+# Any changes to the directives between these markers will be overwritten.
+<IfModule mod_rewrite.c>
 RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
-
-# Add these lines to ensure JavaScript and CSS load correctly
-<FilesMatch "\.(js|css|gif|png|jpg|jpeg|ico|svg|woff|woff2|ttf|eot|otf|mp4|webp)$">
-  Header set Access-Control-Allow-Origin "*"
-</FilesMatch>
-
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule . /index.php [L]
-# END WordPress
+</IfModule>
 
+# END WordPress
