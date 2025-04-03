@@ -97,15 +97,6 @@ define( 'WP_DEBUG', TRUE );
 //define('WP_HOME', $protocol . '://' . $_SERVER['HTTP_HOST']);
 
 
-
-
-/* Add any custom values between this line and the "stop editing" line. */
-define('FORCE_SSL_ADMIN', true);
-if ($_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
-    $_SERVER['HTTPS'] = 'on';
-} 
-
-
 /* That's all, stop editing! Happy publishing. */
 
 /** Absolute path to the WordPress directory. */
