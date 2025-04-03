@@ -65,8 +65,13 @@
                 <div class="container-max-width bottom-content-footer"><a href="<?= home_url(); ?>" aria-current="page"
                         class="link-box-footer-logo w-inline-block w--current"><img src="<?=$footerImage; ?>"
                             loading="lazy" alt="" class="img-footer-logo"></a>
+<<<<<<< HEAD
                     <p class="text-bottom-bar-footer"> <a href="<?= home_url(); ?>" class="txt-color-base">Della Terraaaaa</a> | All Rights
                         Reserved. </br> Developed By <a href="#" class="txt-color-base">Developer</a>
+=======
+                    <p class="text-bottom-bar-footer"> <a href="<?= home_url(); ?>" class="txt-color-base">Della Terraaaaaaaaaaaaaaaaaaaaaaaaa</a> | All Rights
+                        Reserved. </br> Developed By <a href="#" class="txt-color-base">Devloper</a>
+>>>>>>> 953b570 (footer.php changes)
                     </p>
                 </div>
             </div>
