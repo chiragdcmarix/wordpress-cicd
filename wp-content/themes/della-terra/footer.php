@@ -69,8 +69,8 @@
                     <p class="text-bottom-bar-footer"> <a href="<?= home_url(); ?>" class="txt-color-base">Della Terraaaaa</a> | All Rights
                         Reserved. </br> Developed By <a href="#" class="txt-color-base">Developer</a>
 =======
-                    <p class="text-bottom-bar-footer"> <a href="<?= home_url(); ?>" class="txt-color-base">Della Terraaaaaaaaaaaaaaaaaaaaaaaaa</a> | All Rights
-                        Reserved. </br> Developed By <a href="#" class="txt-color-base">Devloper</a>
+                    <p class="text-bottom-bar-footer"> <a href="<?= home_url(); ?>" class="txt-color-base">Della Terra</a> | All Rights
+                        Reserved. </br> Developed By <a href="#" class="txt-color-base">Dev</a>
 >>>>>>> 953b570 (footer.php changes)
                     </p>
                 </div>
