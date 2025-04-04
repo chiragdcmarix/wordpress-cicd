@@ -1,18 +1,32 @@
-pipeline{
+pipeline {
     agent any
-    environment{
-        staging_server="203.109.113.163"
+    environment {
+        STAGING_SERVER = "203.109.113.163"
+        REMOTE_PATH = "/var/www/html/wordpress-cicd"
+        SSH_USER = "jenkins"  // Replace with your actual non-root SSH user
     }
-    stages{
-        stage('Deploy to Remote'){
-            steps{
-                sh '''
-                    for fileName in `find ${WORKSPACE} -type f -mmin -10 | grep -v ".git" | grep -v "Jenkinsfile"`
-                    do
-                        fil=$(echo ${fileName} | sed 's/'"${JOB_NAME}"'/ /' | awk {'print $2'})
-                        scp -r ${WORKSPACE}${fil} root@${staging_server}:/var/www/html/wordpress-cicd${fil}
-                    done
-                '''
+    stages {
+        stage('Deploy to Remote') {
+            steps {
+                script {
+                    sh '''
+                        # List recently changed files
+                        changed_files=$(find ${WORKSPACE} -type f -mmin -10 | grep -v ".git" | grep -v "Jenkinsfile")
+                        
+                        # If no files changed, exit
+                        if [[ -z "$changed_files" ]]; then
+                            echo "No files changed in the last 10 minutes. Skipping deployment."
+                            exit 0
+                        fi
+                        
+                        # Copy files to remote server
+                        for file in $changed_files; do
+                            rel_path="${file#${WORKSPACE}/}"
+                            echo "Deploying: $rel_path"
+                            scp -r "$file" ${SSH_USER}@${STAGING_SERVER}:${REMOTE_PATH}/"$rel_path"
+                        done
+                    '''
+                }
             }
         }
     }
